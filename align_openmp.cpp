@@ -1,3 +1,4 @@
+/* g++ align_openmp.cpp -fopenmp */
 #include <cstdio>
 #include <cstring>
 #include <iostream>
@@ -31,12 +32,12 @@ int lcs_len(const char *A, int na, const char *B, int nb) {
 		#pragma omp parallel for schedule(static) firstprivate(na, A, B)
 		for (int j = l; j <= r; j++) {
 			int x = i-j, y = j;
-            int diag = (A[x]==B[y])?(dp[0][j] + Match) : (dp[0][j] + MisMatch);
-            dp[2][j+1] = max(max(diag, dp[1][j] + Gap), dp[1][j+1] + Gap);
+          	int diag = (A[x]==B[y])?(dp[0][j] + Match) : (dp[0][j] + MisMatch);
+          	dp[2][j+1] = max(max(diag, dp[1][j] + Gap), dp[1][j+1] + Gap);
         }
 		memcpy(dp[0] + last_l, dp[1] + last_l,
 			sizeof(DP_TYPE) * (last_r - last_l + 3));
-	    memcpy(dp[1] + l, dp[2] + l, sizeof(DP_TYPE) * (r - l + 3));
+	  	memcpy(dp[1] + l, dp[2] + l, sizeof(DP_TYPE) * (r - l + 3));
 		last_l = l, last_r = r;
 	}
 	return dp[2][nb];
