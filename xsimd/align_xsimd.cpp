@@ -1,4 +1,4 @@
-//g++ align_xsimd.cpp  -march=native -I./include -std=c++11
+//g++ -O3 -fopt-info -std=c++11 -march=native –I./include align_xsimd.cpp
 #include <cstdio>
 #include <cstring>
 #include <iostream>
