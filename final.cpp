@@ -1,7 +1,6 @@
 //g++ -O3 -fopt-info -optall -std=c++11 final.cpp -march=native -fopenmp
 #include <bits/stdc++.h>
 #include <omp.h>
-#include <cuda_runtime.h>
 using namespace std;
 vector<string> str;
 #define DP_TYPE int
